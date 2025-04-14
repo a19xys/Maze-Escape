@@ -6,6 +6,7 @@ public class BallController : MonoBehaviour {
 
     [SerializeField] private Transform multiTargetTransform;
     private Vector3 localStartPosition;
+    private float fallThresholdY = -1.5f;
 
     void Start() {
         rb = GetComponent<Rigidbody>();
@@ -14,8 +15,14 @@ public class BallController : MonoBehaviour {
             Debug.LogError("Debes asignar el MultiTarget en el Inspector.");
             return;
         }
-
         localStartPosition = multiTargetTransform.InverseTransformPoint(transform.position);
+    }
+
+    void Update() {
+        if (transform.position.y <= fallThresholdY) {
+            Debug.Log("La bola ha caído. Reiniciando posición...");
+            ResetBall();
+        }
     }
 
     public void enableRigidBody(bool enable) {
