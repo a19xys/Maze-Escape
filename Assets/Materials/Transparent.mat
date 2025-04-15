@@ -33,6 +33,7 @@ Material:
     m_Floats:
     - _DstBlend: 10
     - _DstBlendAlpha: 10
+    - _Smoothness: 0.3
     - _Surface: 1
     - _ZWrite: 0
     m_Colors:
